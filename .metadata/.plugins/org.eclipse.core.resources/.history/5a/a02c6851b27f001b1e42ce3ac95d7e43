@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class Test {
+	
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		boolean progopen = true;
+		while (progopen) {
+			System.out.println("*** DCA Coach Booking Menu ***");
+			System.out.println("	1: Display avilable seats");
+			System.out.println("	2: Book seat");
+			System.out.println("	3: Refund seat");
+			System.out.println("	4: Display report");
+			System.out.println("	5: Exit");
+			System.out.print("Please enter your selection: ");
+			int choice = Integer.parseInt(sc.nextLine());
+			System.out.println(choice);
+			progopen = false;
+		}
+
+	}
+
+}

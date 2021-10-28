@@ -1,0 +1,8 @@
+
+public class Toy {
+
+	public Toy() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

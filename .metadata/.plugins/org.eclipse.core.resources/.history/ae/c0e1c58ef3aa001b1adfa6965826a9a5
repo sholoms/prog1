@@ -1,0 +1,12 @@
+
+public class DressUps extends Item {
+	private String genre;
+	private int pieces;
+
+	public DressUps(String[] details, String genre, int pieces) {
+		super(details);
+		this.genre = genre;
+		this.pieces = pieces;
+	}
+
+}

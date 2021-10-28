@@ -1,0 +1,5 @@
+1615872808292	Encapsulate field 'totalSeats'
+1615873276529	Rename method 'bookSeat'
+1615873960641	Rename local variable 'seatType'
+1615891892100	Rename local variable 'seatNumber'
+1615895552440	Rename local variable 'seatChoice'

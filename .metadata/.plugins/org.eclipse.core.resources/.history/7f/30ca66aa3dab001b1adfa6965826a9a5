@@ -1,0 +1,51 @@
+
+public final class DressUp extends Item {
+	private String genre;
+	private int pieces;
+	private String size;
+	private String[] hireDetails = new String[2];
+
+	public DressUp(String[] details, String genre, int pieces, String size) {
+		super(details);
+
+		this.genre = genre;
+		this.size = size;
+		this.pieces = pieces;
+		this.price = pieces * 3.5;
+	}
+
+	public void displayItem() {
+		super.displayItem();
+
+		System.out.printf("Price/week	: $%.2f\n", this.price);
+		System.out.println("Pieces		: " + this.pieces);
+		System.out.println("Genre		: " + this.genre);
+		System.out.println("Size		: " + this.size);
+// 		if the dress up is hired print the hire details
+		if (this.hired == 1) {
+			System.out.printf("Hired by	: %s\n", this.hireDetails[0]);
+			System.out.printf("Hire period	: %s weeks\n", this.hireDetails[1]);
+		}
+	}
+
+	@Override
+	public boolean hireItem(String customerID, int numWeeks) {
+		if (this.hired == 1) {
+			return false;
+		}
+
+		this.hired = 1;
+		this.hireDetails[0] = customerID;
+		this.hireDetails[1] = "" + numWeeks;
+		double cost = this.price * numWeeks + 3;
+		super.printReceipt(customerID, numWeeks, cost);
+		return true;
+	}
+
+	@Override
+	protected double determinePrice() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

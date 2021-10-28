@@ -1,0 +1,16 @@
+
+public final class PlayEquipment extends Item {
+	private int[] dimensions;
+	
+
+	public PlayEquipment(String[] details, int[] dimensions, double price) {
+		super(details);
+	}
+
+	@Override
+	public boolean hireItem(String customerID, int numWeeks) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

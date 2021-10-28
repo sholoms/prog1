@@ -1,0 +1,87 @@
+package items;
+
+public abstract class Item {
+	private static int numOfItems = 0;
+	private static double totalIncome = 0.00;
+	private static String nextID = "1";
+
+	public static int getNumItems() {
+		return numOfItems;
+	}
+
+	public static double getTotalIncome() {
+		return totalIncome;
+	}
+
+	private static void incrementNextId() {
+		int id = Integer.parseInt(Item.nextID);
+		int newNextID = id + 1;
+		Item.nextID = "" + newNextID;
+	}
+
+	private String title;
+	private String description;
+	protected double price;
+	private String id;
+	protected int hired = 0;
+
+	public Item(String[] details) {
+		this.title = details[0];
+		this.description = details[1];
+		Item.numOfItems++;
+		this.id = Item.nextID;
+		Item.incrementNextId();
+		System.out.println("Added item " + this.id);
+	}
+
+	public void displayItem() {
+		System.out.println("ID		: " + this.id);
+		System.out.println("Title		: " + this.title);
+		System.out.println("Description	: " + this.description);
+		System.out.println("Status		: " + this.forHire());
+	}
+
+	public abstract boolean hireItem(String customerID, int numWeeks);
+	
+	protected abstract double determinePrice();
+	
+	public void returnItem() {
+//		return false if item is not hired
+		if (this.hired == 0) {
+			throw new HiringException();
+		}
+
+		this.hired = 0;
+		return true;
+	}
+
+	protected void printReceipt(String customerID, int numWeeks, double cost) {
+		System.out.printf("%-12s : %s\n", "Customer", customerID);
+		System.out.printf("%-12s : %s\n", "Item ID", this.id);
+		System.out.printf("%-12s : %s\n", "Title", this.title);
+		System.out.printf("%-12s : %d weeks\n", "hire period", numWeeks);
+		Item.totalIncome += cost;
+		System.out.printf("%-12s : $%.2f\n", "Total cost", cost);
+	}
+
+	private String forHire() {
+		String status = "Available";
+		if (this.hired == 1) {
+			status = "Hired";
+		}
+		return status;
+	}
+
+	public String getID() {
+		return this.id;
+	}
+
+	public int getStatus() {
+		return this.hired;
+	}
+
+	public void listItem() {
+		System.out.printf("%-5s : %-15s : %s\n", this.id, this.title, this.forHire());
+	}
+
+}

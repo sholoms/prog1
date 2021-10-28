@@ -1,0 +1,48 @@
+
+public class Toy extends Item {
+	private String category;
+	private String[] hireDetails = new String[2];
+	
+	public Toy(String[] details, int category) { 
+		super(details);
+		switch (category) {
+		case 1:
+			this.category = "construction";
+			this.price = 5.45;
+			break;
+		case 2:
+			this.category = "ride-on";
+			this.price = 8.00;
+			break;
+		case 3:
+			this.category = "sport";
+			this.price = 6.50;
+			break;
+		}
+	}
+	
+	public void displayItem() {
+		super.displayItem();
+
+		System.out.println("Description	: " + this.category);
+// 		if the toy is hired print the hire details
+		if (this.hired == 1) {
+			System.out.printf("Hired by	: %s\n", this.hireDetails[0]);
+			System.out.printf("Hire period	: %s weeks\n", this.hireDetails[1]);
+		}
+	}
+
+	public boolean hireItem(String customerID, int numWeeks) {
+//		return false if item is already hired
+		if (this.hired == 1) {
+			return false;
+		}
+
+		this.hired = 1;
+		this.hireDetails[0] = customerID;
+		this.hireDetails[1] = "" + numWeeks;
+		double cost = this.price * numWeeks;
+		super.printReceipt(customerID, numWeeks, cost);
+		return true;
+	}
+}

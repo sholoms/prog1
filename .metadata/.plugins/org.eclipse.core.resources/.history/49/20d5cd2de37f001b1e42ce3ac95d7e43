@@ -1,0 +1,82 @@
+import java.util.Scanner;
+
+public class Coach {
+	private int rows;
+	private int totalSeats;
+	private int freeSeats;
+	private String destination;
+	private double standardPrice;
+	private double pensionerPrice;
+	private double frequentPrice;
+	
+	public Coach() {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("Please enter the number of rows of seats: ");
+		rows = Integer.parseInt(sc.nextLine());
+		System.out.print("Please enter the destination: ");
+		destination = sc.nextLine();
+		System.out.print("Please enter the cost of a standard booking: ");
+		standardPrice = Double.parseDouble(sc.nextLine());
+		System.out.print("Please enter the cost of a pensioner booking: ");
+		pensionerPrice = Double.parseDouble(sc.nextLine());
+		System.out.print("Please enter the cost of a frequent passenger booking: ");
+		frequentPrice = Double.parseDouble(sc.nextLine());
+		
+		boolean progopen = true;
+		
+		while (progopen) {
+			System.out.println("*** DCA Coach Booking Menu ***");
+			System.out.println("	1: Display avilable seats");
+			System.out.println("	2: Book seat");
+			System.out.println("	3: Refund seat");
+			System.out.println("	4: Display report");
+			System.out.println("	5: Exit");
+			System.out.print("Please enter your selection: ");
+			int choice = Integer.parseInt(sc.nextLine());
+			System.out.println(choice);
+			switch (choice) {
+			case 1: this.displaySeats();
+				break;
+			case 2: this.bookSeat();
+				break;
+			case 3: this.refundSeat();
+				break;
+			case 4: this.displayReport();
+				break;
+			case 5: progopen = false;
+				break;
+			default : System.out.println("Invalid selection");
+			}
+		}
+		sc.close();
+	}
+	
+	public void displaySeats() {
+		
+		
+	}
+	
+	public void bookSeat() {
+		
+	}
+	
+	public void refundSeat() {
+		
+	}
+	
+	public void displayReport() {
+		
+	}
+	
+	public void printReciept() {
+		
+	}
+	
+	public static void main(String[] args) {
+		Coach a1obj = new Coach();
+	}
+
+}
+ 	
+

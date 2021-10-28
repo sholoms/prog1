@@ -1,0 +1,9 @@
+package items;
+
+public class HiringException extends Exception {
+
+	public HiringException() {
+		super();
+	}
+
+}

@@ -1,0 +1,11 @@
+
+public class TffExperienceEvent extends TtfEvent{
+	private int maxSeats;
+	
+	public TffExperienceEvent(String[] details, double[] prices, int maxSeats) {
+		super(details, prices);
+		this.maxSeats = maxSeats;
+	}
+
+
+}

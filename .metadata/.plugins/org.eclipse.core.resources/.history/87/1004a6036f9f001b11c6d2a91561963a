@@ -1,0 +1,42 @@
+
+public class TffExperienceEvent extends TtfEvent{
+	private int maxSeats;
+	private String[] tNames;
+	private String[] tTypes;
+	
+	public TffExperienceEvent(String[] details, double[] prices) {
+		super(details, prices);
+		this.maxSeats = Integer.parseInt(details[3]);
+		this.tNames = new String[maxSeats];
+		this.tTypes = new String[maxSeats];
+	}
+
+	@Override
+	public boolean bookTicket(String ticketType, String name) {
+		boolean ticketValid = true;
+		if (this.seatsSold == this.maxSeats){
+			ticketValid = false;
+		}
+		if (ticketValid) {
+			tNames[this.seatsSold] = name;
+			tTypes[this.seatsSold] = ticketType;
+			super.bookTicket(ticketType, name);
+		}
+		return ticketValid;
+	}
+	
+	@Override
+	public void displayEvent() {
+		super.displayEvent();
+		System.out.println("Maximum seats		: " + this.maxSeats);
+		System.out.println("Bookings		: ");
+		System.out.println(this.seatsSold);
+		for(int i = 0; i < this.seatsSold; i++) {
+			System.out.printf("   %-15s : %s\n", this.tNames[i], this.tTypes[i]);
+		}
+	}
+	
+	public boolean refundTicket(String name) {
+		
+	}
+}

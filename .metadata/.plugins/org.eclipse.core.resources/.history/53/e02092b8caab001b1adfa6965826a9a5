@@ -1,0 +1,9 @@
+package exceptons;
+
+public class HiringException extends Exception {
+
+	public HiringException() {
+		super();
+	}
+
+}

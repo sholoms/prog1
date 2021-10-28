@@ -1,0 +1,8 @@
+
+public class PlayEquipment extends Item {
+
+	public PlayEquipment() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

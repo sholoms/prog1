@@ -1,0 +1,46 @@
+public final class PlayEquipment extends Item {
+	private int[] dimensions;
+	private String[] hireDetails = new String[2];
+
+	public PlayEquipment(String[] details, int[] dimensions, double price) {
+		super(details);
+		this.dimensions = dimensions;
+		this.price = price;
+	}
+
+	@Override
+	public boolean hireItem(String customerID, int numWeeks) {
+		if (this.hired == 1) {
+			return false;
+		}
+
+		this.hired = 1;
+		this.hireDetails[0] = customerID;
+		this.hireDetails[1] = "" + numWeeks;
+		double cost = this.price * numWeeks;
+		super.printReceipt(customerID, numWeeks, cost);
+		return true;
+	}
+
+	public void displayItem() {
+		super.displayItem();
+
+		System.out.println("Weight		: " + this.dimensions[0]);
+		System.out.println("Hight		: " + this.dimensions[1]);
+		System.out.println("Width		: " + this.dimensions[2]);
+		System.out.println("Depth		: " + this.dimensions[3]);
+		System.out.printf("Price		: $%.2f per week\n", this.price);
+// 		if the equipment is hired print the hire details
+		if (this.hired == 1) {
+			System.out.printf("Hired by	: %s\n", this.hireDetails[0]);
+			System.out.printf("Hire period	: %s weeks\n", this.hireDetails[1]);
+		}
+	}
+
+	@Override
+	protected double determinePrice() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

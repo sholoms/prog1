@@ -1,0 +1,70 @@
+
+public class TffExperienceEvent extends TtfEvent{
+	private int maxSeats;
+	private String[] bookings;
+
+	public TffExperienceEvent(String[] details, double[] prices) {
+		super(details, prices);
+		this.maxSeats = Integer.parseInt(details[3]);
+		this.bookings = new String[maxSeats];
+	}
+
+	@Override
+	public boolean bookTicket(String ticketType, String name) {
+		boolean ticketValid = true;
+		if (this.seatsSold == this.maxSeats){
+			ticketValid = false;
+		}
+		if (ticketValid) {
+			this.bookings[this.seatsSold] = name + "," + ticketType;
+			super.bookTicket(ticketType, name);
+		}
+		return ticketValid;
+	}
+	
+	@Override
+	public void displayEvent() {
+		super.displayEvent();
+		System.out.println("Maximum seats		: " + this.maxSeats);
+		System.out.println("Bookings		: ");
+		System.out.println(this.seatsSold);
+		for(int i = 0; i < this.seatsSold; i++) {
+			System.out.printf("   %-15s : %s\n", this.tNames[i], this.tTypes[i]);
+		}
+	}
+	
+	public void refundTicket(String name) {
+//		make sure ticket exists and get name index
+		int ticketIndex = this.findTicketIndex(name);
+		if (ticketIndex < 0) {
+			System.out.println("Error - no ticket with the name " + name + " could be found");
+			return;
+		}
+		
+		this.printTicket(this.tNames[ticketIndex], this.tTypes[ticketIndex]);
+		this.removeTicket(ticketIndex);
+	}
+	
+	private void removeTicket(int index) {
+		for(int i = index; i  < this.seatsSold; i ++) {
+			this.tNames[i] = this.tNames[i + 1];
+			this.tTypes[i] = this.tTypes[i + 1];
+		}
+		this.seatsSold --;
+	}
+
+	private int findTicketIndex(String name) {
+		int eventIndex = -1;
+		for (int i = 0; i < this.tNames.length; i++) {
+			if (this.tNames[i].equals(name)) {
+				eventIndex = i;
+			}
+		}
+		return eventIndex;
+	}
+	
+	private String[] ticktDetails(Index) {
+		String[] details = new String[2];
+		return details;
+	}
+}

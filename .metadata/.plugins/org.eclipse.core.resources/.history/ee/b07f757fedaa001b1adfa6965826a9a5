@@ -1,0 +1,23 @@
+
+public class Toy extends Item {
+	private String category;
+
+	public Toy(String[] details, int type) { 
+		super(details);
+		switch (type) {
+		case 1:
+			this.category = "construction";
+			this.price = 5.45;
+			break;
+		case 2:
+			this.category = "ride-on";
+			this.price = 8.00;
+			break;
+		case 3:
+			this.category = "sport";
+			this.price = 6.50;
+			break;
+		}
+	}
+
+}

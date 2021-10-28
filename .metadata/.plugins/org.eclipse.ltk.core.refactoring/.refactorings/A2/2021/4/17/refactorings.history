@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Stage_b&apos; to &apos;Stage_C&apos;&#x0D;&#x0A;- Original project: &apos;A2&apos;&#x0D;&#x0A;- Original element: &apos;Stage_b&apos;&#x0D;&#x0A;- Renamed element: &apos;Stage_C&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Stage_b&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{Stage_b.java[Stage_b" matchStrategy="1" name="Stage_C" qualified="false" references="true" similarDeclarations="false" stamp="1618721814829" textual="false" version="1.0"/>
+</session>

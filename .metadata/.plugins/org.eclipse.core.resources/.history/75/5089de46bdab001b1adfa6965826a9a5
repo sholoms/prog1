@@ -1,0 +1,57 @@
+
+public final class Toy extends Item {
+	private String category;
+	private String[] hireDetails = new String[2];
+
+	public Toy(String[] details, String category) {
+		super(details);
+		switch (category) {
+		case "construction":
+			this.category = "Construction";
+			this.price = 5.45;
+			break;
+		case "ride-on":
+			this.category = "Ride-On";
+			this.price = 8.00;
+			break;
+		case "sport":
+			this.category = "Sport";
+			this.price = 6.50;
+			break;
+		default: 
+			String message = "Invalid argument - must be one of construction/ride-on/sport";
+			throw new IllegalArgumentException(message);
+		}
+	}
+
+	public void displayItem() {
+		super.displayItem();
+		System.out.printf("Price/week	: $%.2f\n", this.price);
+		System.out.println("Category	: " + this.category);
+// 		if the toy is hired print the hire details
+		if (this.hired == 1) {
+			System.out.printf("Hired by	: %s\n", this.hireDetails[0]);
+			System.out.printf("Hire period	: %s weeks\n", this.hireDetails[1]);
+		}
+	}
+
+	public boolean hireItem(String customerID, int numWeeks) {
+//		return false if item is already hired
+		if (this.hired == 1) {
+			return false;
+		}
+
+		this.hired = 1;
+		this.hireDetails[0] = customerID;
+		this.hireDetails[1] = "" + numWeeks;
+		double cost = this.determinePrice();
+		super.printReceipt(customerID, numWeeks, cost);
+		return true;
+	}
+
+	@Override
+	protected double determinePrice() {
+		price = this.price * Integer.parseInt(this.hireDetails[1]);
+		return price;
+	}
+}
